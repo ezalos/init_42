@@ -1,0 +1,19 @@
+#! /bin/bash
+
+#Identifiez et affichez les caractéristiques de l’interface Ethernet :
+#(a) Indiquez l’adresse de Broadcast
+#(b) Indiquez toutes les adresses IP qui font partie du même sous-réseau
+broadcast="$(ifconfig | grep -oE "(broadcast [1234567890\.]+)")"
+netmask="$(ifconfig | grep -o -E "(netmask [1234567890\.]+)")"
+echo $broadcast
+echo $netmask
+
+OIFS="$IFS"
+IFS=' '
+read -a dnsservers <<< "$(ifconfig)"
+IFS="$OIFS"
+
+for i in "${dnsservers[@]}"
+do
+   echo "$i"
+done
