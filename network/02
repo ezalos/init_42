@@ -3,17 +3,27 @@
 #Identifiez et affichez les caractéristiques de l’interface Ethernet :
 #(a) Indiquez l’adresse de Broadcast
 #(b) Indiquez toutes les adresses IP qui font partie du même sous-réseau
-broadcast="$(ifconfig | grep -oE "(broadcast [1234567890\.]+)")"
-netmask="$(ifconfig | grep -o -E "(netmask [1234567890\.]+)")"
-echo $broadcast
-echo $netmask
 
-OIFS="$IFS"
-IFS=' '
-read -a dnsservers <<< "$(ifconfig)"
-IFS="$OIFS"
+void=""
 
-for i in "${dnsservers[@]}"
+targets=($(ifconfig | cat -e | grep -oE "(^[a-zA-Z0-9]+)"))
+
+
+for i in "${targets[@]}"
 do
-   echo "$i"
+	broadcast="$(ifconfig $i | grep -oE "(broadcast [0-9\.]+)")"
+	netmask="$(ifconfig $i | grep -o -E "(netmask [0-9a-z\.]+)")"
+	if [ $broadcast = $void ]
+	then
+		a="A"
+	else
+			echo "Inteface: " $i " is ethernet interface"
+			echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+			ifconfig $i
+			echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+			echo "Broadcast: " $broadcast
+			echo "Netmask: " $netmask
+	fi
+	broadcast=""
+	netmask=""
 done

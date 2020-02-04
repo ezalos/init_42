@@ -3,4 +3,9 @@
 #	Récupérez la liste des interfaces réseau de la machine sans afficher
 #	aucun détail pour ces interfaces. Vraiment juste la liste des noms.
 
-ifconfig | grep -o -E "(^[^ :]+)"
+
+targets=($(ifconfig | cat -e | grep -oE "(^[a-zA-Z0-9]+)"))
+for i in "${targets[@]}"
+do
+   echo "$i"
+done

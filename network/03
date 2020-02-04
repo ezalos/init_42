@@ -2,5 +2,42 @@
 
 # Identifiez l’adresse MAC de la carte Wi-Fi
 
-ethernet="$(ifconfig | grep -oE "ether ([^ ]+)")"
-echo $ethernet
+void=""
+
+targets=($(ifconfig | cat -e | grep -oE "(^[a-zA-Z0-9]+)"))
+WiFi=""
+
+for i in "${targets[@]}"
+do
+	WiFi="$(ifconfig -v $i | grep -o 'Wi-Fi')"
+	# if [ -n "$WiFi"]
+	if [ $i = "en1" ]
+	then
+		ethernet="$(ifconfig $i | grep -oE "ether [a-z0-9:]+" | grep -oE " [a-z0-9:]+")"
+		echo "Inteface: " $i " is Wi-Fi interface"
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		ifconfig -v $i
+		echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+		echo "Ethernet: " $ethernet
+		echo
+		echo
+	fi
+	WiFi=""
+done
+
+
+# https://superuser.com/questions/1482933/ifconfig-shows-multiple-network-interfaces
+
+# lo0 is the loopback virtual interface.
+# en0 is your built-in Wi-Fi.
+# en1 and en2 are your Thunderbolt ports. macOS supports IP over Thunderbolt this way.
+# bridge0 is a virtual interface that bridges your two IP over Thunderbolt interfaces together.
+# en3 is likely an external Ethernet dongle in your scenario.
+# awdl0 is Apple Wireless Direct Link. It's an Apple-proprietary, incompatible equivalent to Wi-Fi Aware or Wi-Fi Direct. It's how AirDrop and AirPlay and Handoff and a few other things work.
+# p2p0 Is like an earlier version of AWDL. When AirDrop first came out and was Mac-only, it used this. iOS never used this and used AWDL instead. Now both platforms prefer AWDL but the older mac-only Apple Peer to Peer wireless protocol still exists for backwards compatibility with older Macs running ancient versions of macOS.
+# utun0 is a tunnel virtual interface used for VPN connections.
+# ipsec0 is also a VPN-related virtual interface.
+# gif0 is a virtual "generic interface" used for certain IPv6-in-IPv4 tunneling situations.
+# stf0 is a virtual interface for an obsolete IPv4/IPv6 transition mechanism known as 6to4 that is still in use by a few people.
+# The *HC* interfaces are for using a packet sniffer to capture USB traffic instead of network traffic.
+# Please note that the exact meanings of en0-enX vary from model to model. The lowest numbers go to built-in Ethernet ports first (in any exist) then to built-in Wi-Fi, then to built-in Thunderbolt ports, if any. After that comes add-on Ethernet-like interfaces (such as USB Ethernet dongles, Thunderbolt Ethernet dongles, and USB Wi-Fi dongles) in the order they were seen by the system.

@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# Identifiez l’IP du serveur DNS qui répond sur le domaine suivant : slash16.org
+
+# DNS="$(nslookup slash16.org)"
+# echo $DNS
+nslookup slash16.org | grep Server

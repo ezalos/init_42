@@ -2,5 +2,5 @@
 
 # Identifiez la gateway par défaut dans la table de routage
 
-gateway="$(netstat -rn | grep -oP "0.0.0.0[ ]+([^\W]+|[.]+)")"
-echo $gateway
+gateway="$(netstat -rn | grep -oE "default[ ]+[0-9.]+")"
+echo $(echo $gateway | grep -oE "[0-9.]+$")
