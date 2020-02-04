@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# Identifiez la gateway par défaut dans la table de routage
+
+gateway="$(netstat -rn | grep -oP "0.0.0.0[ ]+([^\W]+|[.]+)")"
+echo $gateway

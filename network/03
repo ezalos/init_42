@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# Identifiez l’adresse MAC de la carte Wi-Fi
+
+ethernet="$(ifconfig | grep -oE "ether ([^ ]+)")"
+echo $ethernet
