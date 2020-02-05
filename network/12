@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# Trouvez l’IP qui vous a été assignée par le serveur dhcp
+
+ifconfig | grep -A 4 "en0" | grep -oE "inet [0-9.]+"

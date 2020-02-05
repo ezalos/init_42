@@ -1,0 +1,5 @@
+# Grâce a la question précédente et au reverse DNS retrouvez le nom de votre host
+
+e2r12p7.42.fr.
+
+# dig -x 10.12.12.7 +short

@@ -4,16 +4,13 @@
 #(a) Indiquez l’adresse de Broadcast
 #(b) Indiquez toutes les adresses IP qui font partie du même sous-réseau
 
-void=""
-
 targets=($(ifconfig | cat -e | grep -oE "(^[a-zA-Z0-9]+)"))
-
 
 for i in "${targets[@]}"
 do
 	broadcast="$(ifconfig $i | grep -oE "(broadcast [0-9\.]+)")"
 	netmask="$(ifconfig $i | grep -o -E "(netmask [0-9a-z\.]+)")"
-	if [ $broadcast = $void ]
+	if [ -z "$broadcast" ]
 	then
 		a="A"
 	else

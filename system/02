@@ -1,0 +1,10 @@
+#! /bin/bash
+
+# Quel est le fichier à modifier pour rendre cela permanent ?
+
+su
+hostname new_name
+
+
+# By default sudo is not installed on Debian
+# https://unix.stackexchange.com/questions/354928/bash-sudo-command-not-found

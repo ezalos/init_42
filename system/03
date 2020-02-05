@@ -1,0 +1,6 @@
+# Quel est le fichier à modifier pour rendre cela permanent ?
+
+#su
+#echo "new_name" > /etc/hostname
+
+Il s'agit du fichier /etc/hostname

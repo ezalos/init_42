@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# Donnez une commande qui détermine l’état du service SSH
+
+ss | grep ssh
+
+# https://www.golinuxcloud.com/list-check-active-ssh-connections-linux/

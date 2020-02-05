@@ -1,0 +1,10 @@
+# Trouver l’IP Publique de 42.fr
+
+# nslookup 42.fr 8.8.8.8 | grep -A2 "Name" | grep "Address"
+
+Address: 163.172.250.12
+# Address: 163.172.250.13
+
+# Pq plusieurs ? DNS Round Robin
+# https://fr.wikipedia.org/wiki/DNS_round-robin
+# https://www.flexera.com/blog/cloud/2012/10/dns-load-balancing-and-using-multiple-load-balancers-in-the-cloud/
