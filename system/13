@@ -1,0 +1,11 @@
+#! /bin/bash
+
+# Trouvez une commande qui permet, en temps réel, de trouver les processus en
+# cours d’exécution
+
+
+#real time output
+top
+
+#listing just processes:
+# ps -A

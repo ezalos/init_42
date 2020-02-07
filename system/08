@@ -1,6 +1,3 @@
-#! /bin/bash
+# Quel fichier contient les clés RSA des machines autorisées à se connecter via SSH ?
 
-# Quelle commande donne le temps depuis lequel votre système à été démarré la
-# dernière fois ?
-
-last reboot
+/root/.ssh/id_rsa

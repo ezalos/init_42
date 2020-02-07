@@ -1,0 +1,5 @@
+# Trouvez un service qui permet de lancer des tâches à horaires régulières
+
+cron
+
+# https://debian-handbook.info/browse/fr-FR/stable/sect.task-scheduling-cron-atd.html
