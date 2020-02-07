@@ -2,6 +2,6 @@
 
 # Donnez une commande qui détermine l’état du service SSH
 
-ss | grep ssh
+sudo systemctl status ssh
 
 # https://www.golinuxcloud.com/list-check-active-ssh-connections-linux/

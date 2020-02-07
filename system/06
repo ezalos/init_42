@@ -1,6 +1,5 @@
 #! /bin/bash
 
-# Quelle commande donne le temps depuis lequel votre système à été démarré la
-# dernière fois ?
+# Donnez une commande pour redémarrer le service SSH
 
-last reboot
+sudo systemctl restart ssh

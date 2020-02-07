@@ -1,6 +1,5 @@
 #! /bin/bash
 
-# Quelle commande donne le temps depuis lequel votre système à été démarré la
-# dernière fois ?
+#  Déterminez le PID du service SSHD
 
-last reboot
+pgrep ssh
