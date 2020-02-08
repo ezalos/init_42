@@ -1,0 +1,21 @@
+#! /bin/bash
+
+# Réalisez un script qui permet de supprimer un user LOGUÉ sur la machine
+
+su - root
+
+
+ps -fp $(pgrep -u $1)
+# pgrep  looks  through the currently running processes and lists the process
+# IDs which match the selection criteria
+
+# ps displays information about a selection of the active processes.
+
+killall -KILL -u $1
+# killall sends a signal to all processes running any of the specified commands.
+# If  no  signal name is specified, SIGTERM is sent.
+
+userdel -r $1
+# userdel is a low level utility for removing users.
+# The userdel command modifies the system account files, deleting all entries that
+# refer to the user name LOGIN. The named user must exist.

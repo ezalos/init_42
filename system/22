@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# Quelle commande permet d’ajouter un utilisateur local supplémentaire ?
+
+sudo adduser new_user_name
+
+# https://doc.ubuntu-fr.org/adduser

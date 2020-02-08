@@ -1,0 +1,17 @@
+# Expliquez comment se connecter en tant que ce nouvelle utilisateur. (En session
+# graphique et en session ssh)
+
+USER_NAME="new_user_name"
+
+# la commande su nous permet de le faire en invocant un user apres elle
+# Neanmoins, des complication pourrait exister avec le '~' a cause des possessions de droits
+# Ainsi il vaut mieux utiliser su - $USER_NAME
+
+su - $USER_NAME
+
+# Nous pourrions aussi utiliser
+# su -l $USER_NAME
+# ou bien:
+# su --login $USER_NAME
+
+# https://www.tecmint.com/difference-between-su-and-su-commands-in-linux/

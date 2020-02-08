@@ -2,3 +2,7 @@
 
 # Trouvez une commande qui, en parallèle de la session graphique, permet de se
 # connecter en ssh sur la machine
+
+ssh -p 2222 ldevelle@127.0.0.1
+
+# https://forums.virtualbox.org/viewtopic.php?f=8&t=55766

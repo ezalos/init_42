@@ -1,0 +1,32 @@
+#! /bin/bash
+
+#  Listez tout les utilisateurs existants sur la machine
+
+# cat /etc/passwd | grep -oE "^([^:]+:){2}1[0-9]{3}" | grep -Eo "^[^:]+"
+
+grep -E '^UID_MIN|^UID_MAX' /etc/login.defs
+getent passwd {1000..60000} | grep -Eo "^[^:]+"
+
+# https://linuxize.com/post/how-to-list-users-in-linux/
+#
+# Normal users are the users created by the root or another user with sudo privileges.
+# Usually, a normal user has a real login shell and a home directory.
+#
+# Each user has a numeric user ID called UID.
+# If not specified when creating a new user with the useradd command,
+# the UID will be automatically selected from the /etc/login.defs file
+# depending on the UID_MIN and UID_MIN values.
+#
+# To check the UID_MIN and UID_MIN values on your system you can use
+# the following command:
+#
+# grep -E '^UID_MIN|^UID_MAX' /etc/login.defs
+#
+# UID_MIN          1000
+# UID_MAX         60000
+#
+# From the output above, we can see that all normal users should have a UID
+# between 1000 and 60000. Knowing the minimal and maximal value allow us to
+# query a list of all normal users in our system.
+#
+# getent passwd {1000..60000}

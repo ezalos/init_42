@@ -1,0 +1,8 @@
+#! /bin/bash
+
+#  Donnez une commande qui permet d’arrêter le service ssh
+
+# will stop the ssh service, but will not kill active session
+sudo systemctl stop ssh
+# next line will kill active session
+# sudo pkill ssh

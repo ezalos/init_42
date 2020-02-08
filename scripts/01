@@ -1,0 +1,17 @@
+#! /bin/bash
+
+# Réalisez un script qui affiche seulement le login, le UID et le Path de chaques
+# entrée du fichier /etc/passwd
+
+cat /etc/passwd | cut -d : -f 1,3,6
+
+# https://fr.wikipedia.org/wiki/Passwd
+# jsmith:x:1001:1000:Joe Smith,Room 1007,(234)555-8910,(234)5550044,email:/home/jsmith:/bin/sh
+#
+# jsmith : le nom de l'utilisateur (login name). C'est la chaîne de caractères que l'utilisateur entre lorsqu'il se connecte au système. Le nom d'utilisateur doit être unique dans le système.
+# x : les informations utilisées pour valider le mot de passe d'un utilisateur. Dans la plupart des usages modernes, ce champ contient "x" (ou "*", ou un autre indicateur) et les informations de mot de passe étant stockées dans un fichier de mots de passe séparé. Sur les systèmes Linux, "*" empêche les connexions d'un compte tout en conservant son nom d'utilisateur, alors que "*NP*" indique d'utiliser un serveur NIS pour obtenir le mot de passe2. Avant le masquage du mot de passe (c'est-à-dire dans les premières implantations de Unix), ce champ contenait un hachage cryptographique du mot de passe de l'utilisateur (en combinaison avec un sel).
+# 1001 : l'identifiant d'utilisateur. Un nombre utilisé par le système d'exploitation à des fins internes. Il n'est pas nécessairement unique.
+# 1000 : l'identifiant de groupe. Un nombre qui identifie le groupe principal de l'utilisateur. Tous les fichiers créés par cet utilisateur peuvent être initialement accessibles à ce groupe.
+# Joe Smith,Room 1007,(234)555-8910,(234)5550044,email : le champ Gecos. Un commentaire qui décrit la personne ou le compte. Généralement, il s'agit d'un ensemble de valeurs séparées par des virgules, fournissant le nom complet de l'utilisateur et ses coordonnées.
+# /home/jsmith : le chemin vers le répertoire personnel de l'utilisateur.
+# /bin/sh : le programme qui est lancé chaque fois que l'utilisateur se connecte au système. Pour un utilisateur interactif, il s'agit généralement d'une interface en ligne de commande.

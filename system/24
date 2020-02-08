@@ -1,0 +1,12 @@
+#! /bin/bash
+
+# Quelle commande permet de lister tout les packages INSTALLÉS sur la machine ?
+
+sudo apt list --installed
+
+# or
+# dpkg --get-selections | grep -v deinstall
+# or
+# sudo dpkg-query -l
+
+# https://linux4one.com/how-to-list-installed-packages-on-debian/

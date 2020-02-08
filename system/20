@@ -1,0 +1,7 @@
+#! /bin/bash
+
+#  Listez tout les utilisateurs existants sur la machine
+
+cat /etc/passwd | grep -oE "^[^:]+"
+
+# https://www.cyberciti.biz/faq/linux-list-users-command/
