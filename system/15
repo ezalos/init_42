@@ -1,9 +1,5 @@
-#! /bin/bash
-
 # Trouvez une commande qui permet de tuer le processus de la commande en background
 
 # jobs -l
 # allow to know PID of background jobs
-PID=$(jobs -l | grep -oE "\[[0-9]\][ ]+[0-9]+[ ]+Running" | grep -oE "[0-9][0-9][0-9][0-9]")
-
-kill -KILL $PID
+PID="$(jobs -l | grep -oE "\[[0-9]\].+Running" | grep -oE "[0-9]{4}")" && sudo kill -KILL $PID

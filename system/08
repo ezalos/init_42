@@ -1,3 +1,5 @@
 # Quel fichier contient les clés RSA des machines autorisées à se connecter via SSH ?
 
-/root/.ssh/id_rsa
+/root/.ssh/authorized_keys
+
+# https://www.debian.org/devel/passwordlessssh

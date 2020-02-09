@@ -6,4 +6,4 @@
 # (disk free)
 df -h
 # (disk usage)
-du -h
+sudo du -h /
